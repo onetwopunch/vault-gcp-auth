@@ -1,0 +1,9 @@
+#!/bin/bash
+project=$1
+
+vault login -method=gcp \
+    role="gcs-editor" \
+    service_account="vault-user-auth@$project.iam.gserviceaccounts.com" \
+    project="$project" \
+    jwt_exp="15m" \
+    credentials=@$GOOGLE_APPLICATION_CREDENTIALS
